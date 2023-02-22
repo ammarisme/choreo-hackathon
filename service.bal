@@ -19,7 +19,6 @@ service / on new http:Listener(9090) {
         // Send a response back to the caller.
         var result = caller->respond("Item added successfully");
         if (result is error) {
-            log:printError("Error sending response", err = result);
         }
     }
 }
