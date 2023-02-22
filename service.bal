@@ -14,4 +14,12 @@ service / on new http:Listener(9090) {
         }
         return "Hello, " + name;
     }
+
+    resource function post item(http:Caller caller, http:Request request) {
+        // Send a response back to the caller.
+        var result = caller->respond("Item added successfully");
+        if (result is error) {
+            log:printError("Error sending response", err = result);
+        }
+    }
 }
