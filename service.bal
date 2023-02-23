@@ -21,4 +21,12 @@ service / on new http:Listener(9090) {
         if (result is error) {
         }
     }
+
+    resource function get items(){
+        // Send a response back to the caller.
+        return [{"item_id": "1", "name": "item name", "description": "item description"}, {"item_id": "2", "name": "item 2", "description": "2nd description"}];
+        if (result is error) {
+            var result = caller->respond("Error occurred!");
+        }
+    }
 }
